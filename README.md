@@ -1,83 +1,62 @@
 # BYODForecast
 
-A scalable time series forecasting system that allows users to upload their data and get forecasts using various models.
-
-## Features
-
-- Upload CSV files from S3
-- Choose between fast results or precise forecasts
-- Multiple error metrics to optimize for
-- Automated model selection and hyperparameter tuning
-- Ensemble forecasting capabilities
-- Interactive visualization of results
+A scalable time series forecasting system with a modern web interface.
 
 ## Project Structure
 
 ```
 BYODForecast/
-├── backend/
-│   ├── app/
-│   │   ├── api/
-│   │   ├── core/
-│   │   ├── models/
-│   │   └── services/
-│   └── tests/
-├── frontend/
-│   ├── public/
-│   └── src/
-└── infrastructure/
+├── byodforecast-ui/     # Frontend React application
+└── byodforecast-api/    # Backend FastAPI application
 ```
 
-## Setup Instructions
+## Frontend (byodforecast-ui)
 
-1. Clone the repository
-2. Set up Python virtual environment:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   pip install -r requirements.txt
-   ```
+The frontend is built with React and Material-UI. See [byodforecast-ui/README.md](byodforecast-ui/README.md) for setup instructions.
 
-3. Set up environment variables:
-   Create a `.env` file in the root directory with:
-   ```
-   AWS_ACCESS_KEY_ID=your_access_key
-   AWS_SECRET_ACCESS_KEY=your_secret_key
-   AWS_REGION=your_region
-   ```
+## Backend (byodforecast-api)
 
-4. Start the backend server:
-   ```bash
-   cd backend
-   uvicorn app.main:app --reload
-   ```
+The backend is built with FastAPI and Python. See [byodforecast-api/README.md](byodforecast-api/README.md) for setup instructions.
 
-5. Start the frontend development server:
-   ```bash
-   cd frontend
-   npm install
-   npm start
-   ```
+## Development
 
-## Available Error Metrics
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/BYODForecast.git
+cd BYODForecast
+```
 
-- Mean Absolute Error (MAE)
-- Root Mean Squared Error (RMSE)
-- Mean Absolute Percentage Error (MAPE)
-- Symmetric Mean Absolute Percentage Error (SMAPE)
+2. Set up the frontend:
+```bash
+cd byodforecast-ui
+npm install
+npm start
+```
 
-## Models
+3. Set up the backend:
+```bash
+cd ../byodforecast-api
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
 
-### Fast Results
-- ARIMA
-- Exponential Smoothing
-- Prophet
-- Linear Regression
-- Random Forest
+## Environment Variables
 
-### Precise Results (Additional)
-- DeepAR
-- Temporal Fusion Transformer (TFT)
+### Frontend
+Create `byodforecast-ui/.env`:
+```
+REACT_APP_API_URL=http://localhost:8000
+```
+
+### Backend
+Create `byodforecast-api/.env`:
+```
+AWS_ACCESS_KEY_ID=your_access_key
+AWS_SECRET_ACCESS_KEY=your_secret_key
+AWS_REGION=your_region
+```
 
 ## License
 
